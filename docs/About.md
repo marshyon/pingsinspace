@@ -77,9 +77,9 @@ The Ping Engine additionally processes and sends alerts that may be configured t
 ## Scaling, High Availability and Design Principles
 
 Pings in Space is designed along [KISS](https://en.wikipedia.org/wiki/KISS_principle) principles where each component is intended to carry out as few as possible roles.
-This enables each component to be more easily scoped and tested and for each componenent to be scaled in order to serve more demanding scenarios.
+This enables each component to be more easily scoped and tested and for each component to be scaled in order to serve more demanding scenarios.
 
-High Availability, as in any given scenario may be attained to depending upon the required level of resilence and the amount of effort and expenditure commited to based upon a cost benefit analysis.
+Any level of high availabilit may be reached but this depends upon the amount of effort and expenditure committed to based upon a cost benefit analysis.
 
 ### Coping with Agent Failures
 
@@ -103,8 +103,8 @@ The reporting and alerting function of the Engine role may be monitored and made
 
 ### User Interface Availability
 
-As the User interface is optional to the running of both Engines and Agents this may be considered to be 'ephemeral' as a failure to access the UI may be
-tollerated as long as the service may be restored in a timely manner.
+As the User interface is optional to the running of both Engines and Agents this may be considered to be 'ephemeral', as a failure to access the UI may be
+tolerated as long as the service may be restored in a timely manner.
 
 This said, as the UI is deployed as a Single Page Application, so long
 as the Engine API is available, it may be served from a highly available endpoint such as a Web Application in Azure or equivalent AWS service. In on-prem implementations this may be made highly available by the same means as the Engine Restful API, utilising highly available load balancers.
