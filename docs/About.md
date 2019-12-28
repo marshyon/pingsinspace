@@ -39,7 +39,7 @@ It issues alerts where configured to so so and these alerts may be SMS (mobile t
 
 The second component, the agent, monitors endpoints and may perform a number of tests for availability and performance of one or more endpoints.
 
-As each set of test results are obtained by the agent it sends these back to the Ping Engine for processing. It may store and forward these events as connectivity to the Ping Engine is available. If an agent is isolated from its parent Engine, for example by a network outage, it may collate results and send them connections have been restored.
+As each set of test results are obtained by the agent it sends these back to the Ping Engine for processing. It may store and forward these events as connectivity to the Ping Engine is available. If an agent is isolated from its parent Engine, for example by a network outage, it may collate results and send them when connections have been restored.
 
 The agent may use any number of checks available for example by toolsets such as Nagios / Icinga or from any Nagios like 'plugin' that is created in the same manner as these plugins. Subsequently any test / health check may be added, making the agent(s) fully configurable to suit any monitoring requirements.
 
