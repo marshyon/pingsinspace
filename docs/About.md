@@ -30,7 +30,7 @@ the following components comprise a minimal configuration :
 ## Ping Engine
 
 The Ping Engine is the main component which monitors for and generates alerts in response to events. Example events are where a system or systems are seen to be down or off-line or where a performance threshold is breached.
-
+o
 The Ping Engine is accessed via a REST API.
 
 It issues alerts where configured to so so and these alerts may be SMS (mobile text alerts), emails or integrations to 3rd parties.
@@ -41,7 +41,7 @@ The second component, the agent, monitors endpoints and may perform a number of 
 
 As each set of test results are obtained by the agent it sends these back to the Ping Engine for processing. It may store and forward these events as connectivity to the Ping Engine is available. If an agent is isolated from its parent Engine, for example by a network outage, it may collate results and send them when connections have been restored.
 
-The agent may use any number of checks available for example by toolsets such as Nagios / Icinga or from any Nagios like 'plugin' that is created in the same manner as these plugins. Subsequently any test / health check may be added, making the agent(s) fully configurable to suit any monitoring requirements.
+The agent may use any number of checks available for example from toolsets such as Nagios / Icinga or from any Nagios like 'plugin' that is created in the same manner as these plugins. Subsequently any test / health check may be added, making the agent(s) fully configurable to suit any monitoring requirements.
 
 ## Endpoint
 
