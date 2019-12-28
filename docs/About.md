@@ -73,3 +73,28 @@ The Ping Engine additionally processes and sends alerts that may be configured t
 - SMS
 - Email
 - Push messages to 3rd party providers such as to OpsGenie, PagerDuty, Nagios, Icinga
+
+## Scaling and Design Principles
+
+Pings in Space is designed along [KISS](https://en.wikipedia.org/wiki/KISS_principle) principles where each component is intended to carry out as few as possible roles.
+This enables each component to be more easily scoped and tested and for each componenent to be scaled in order to serve more demanding scenarios.
+
+### Coping with Agent Failures
+
+As one or more agents may run at a time, additional agents can be deployed as the amount of endpoints to be tested increases.
+
+If an agent stops working, it
+can be marked as 'dead' by the engine which may in turn reject further input from the failing agent and subsequently
+deploy additional agents to compensate for this loss. Newly instantiated agents may be then configured with the work load of the failing agent(s).
+
+### Coping with Engine Failures
+
+The Ping Engine is an API served by a web service endpoint which may
+be run upon one or more instances and load balanced by high availability load balanc solutions such as an API Gateway as provided
+by Cloud Providors such as AWS or Azure or by self hosted instances of
+HA Proxy or Nginx.
+
+A database serves the back-end and this may be run as a cluster or stand alone component depending upon the level of resilience required. As Postgres SQL server is used this may be itself made resilient for on-prem based solutions by using Postgres's own cluster capability or by using [Cockroach DB](https://www.cockroachlabs.com/). For Cloud based implementations resilient SaaS Postgres may also be
+used by any of the key players such as Azure or AWS.
+
+The reporting and alerting function of the Engine role may be monitored and made resilient by another instance of Pings in Space or by a third party managed cron service such as [Cloud Scheduler](https://cloud.google.com/scheduler/)
