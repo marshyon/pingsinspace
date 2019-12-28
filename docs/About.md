@@ -98,3 +98,11 @@ A database serves the back-end and this may be run as a cluster or stand alone c
 used by any of the key players such as Azure or AWS.
 
 The reporting and alerting function of the Engine role may be monitored and made resilient by another instance of Pings in Space or by a third party managed cron service such as [Cloud Scheduler](https://cloud.google.com/scheduler/)
+
+### User Interface Availability
+
+As the User interface is optional to the running of both Endinges and Agents this may be considered to be 'ephemeral' as a failure to access the UI may be
+tollerated as long as the service may be restored in a timely manner.
+
+This said, as UI is deployed as a Single Page Application, so long
+as the Engine API is available, it may be served from a highly available endpoint such as a Web Application in Azure or equivalent AWS service. In on-prem implementations this may be made highly available by the same means as may the Engine Restful API, utilising highly available load balancers.
