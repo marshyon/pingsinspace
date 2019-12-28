@@ -39,13 +39,13 @@ It issues alerts where configured to so so and these alerts may be SMS (mobile t
 
 The second component, the agent, monitors endpoints and may perform a number of tests for availability and performance of one or more endpoints.
 
-As each set of test results are obtained by the agent it sends these back to the Ping Engine for processing. It may store and forward these events as connectivity to the Ping Engine is available so that if an agent is isolated from its parent Engine for example by a network outage it may collate results to send when connections are restored.
+As each set of test results are obtained by the agent it sends these back to the Ping Engine for processing. It may store and forward these events as connectivity to the Ping Engine is available. If an agent is isolated from its parent Engine, for example by a network outage, it may collate results and send them connections have been restored.
 
 The agent may use any number of checks available for example by toolsets such as Nagios / Icinga or from any Nagios like 'plugin' that is created in the same manner as these plugins. Subsequently any test / health check may be added, making the agent(s) fully configurable to suit any monitoring requirements.
 
 ## Endpoint
 
-An endpoint is anything that can be monitored by an agent which are either
+An endpoint is anything that can be monitored by an agent which is either
 local to or remotely acessible from an agent. Examples of an endpoint could be:
 
 - HTTP / HTTPS web endpoint
@@ -54,21 +54,21 @@ local to or remotely acessible from an agent. Examples of an endpoint could be:
 
 ## UI
 
-As the Ping Engine is accessible via a RESTfull API, the User Interfaces is entirely optional if that is all that is required, for example where another application is integrated with PingsInSpace using this API or where tools such as Postman are used to get / set status and configuration of alerts and thresholds.
+As the Ping Engine is accessible via a Restful API, the User Interfaces is entirely optional if that is all that is required, for example where another application is integrated with PingsInSpace using this API or where tools such as Postman are used to get / set status and configuration of alerts and thresholds.
 
-However the UI makes setup simpler and more straight forward. Also, no knowledge of the API is required and therfore setup and configuration is made simpler.
+However the UI makes setup simpler and more straight forward. Also, no knowledge of the API is required and therefore setup and configuration is made simpler.
 
 ## Pings In Space Diagram
 
 ![alt text](pingsinspace.svg)
 
-Here all 4 compoents (above) are shown working together in as simple way as possible.
+Here all 4 components (above) are shown working together in as simple way as possible.
 
-A Ping Agent 'polls' endpoints to obtain status and performance information of several endpoints. The status of each test is subsequently fed back to the Ping Engine where these are stored, summarised and montored for breaches of performance thresholds.
+A Ping Agent 'polls' endpoints to obtain status and performance information of several endpoints. The status of each test is subsequently fed back to the Ping Engine where these are stored, summarised and monitored for breaches of performance thresholds.
 
 The Ping User Interface makes this information available for viewing and the configuring of existing or additional endpoint tests.
 
-The Ping Engine additionally process and sends alerts that may be configured to be for example
+The Ping Engine additionally processes and sends alerts that may be configured to be for example
 
 - SMS
 - Email
