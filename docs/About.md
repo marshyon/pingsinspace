@@ -79,7 +79,7 @@ The Ping Engine additionally processes and sends alerts that may be configured t
 Pings in Space is designed along [KISS](https://en.wikipedia.org/wiki/KISS_principle) principles where each component is intended to carry out as few as possible roles.
 This enables each component to be more easily scoped and tested and for each component to be scaled in order to serve more demanding scenarios.
 
-Any level of high availabilit may be reached but this depends upon the amount of effort and expenditure committed to based upon a cost benefit analysis.
+Any level of high availability may be reached but this depends upon the amount of effort and expenditure committed to based upon a cost benefit analysis.
 
 ### Coping with Agent Failures
 
