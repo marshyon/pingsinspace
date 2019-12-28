@@ -74,10 +74,12 @@ The Ping Engine additionally processes and sends alerts that may be configured t
 - Email
 - Push messages to 3rd party providers such as to OpsGenie, PagerDuty, Nagios, Icinga
 
-## Scaling and Design Principles
+## Scaling, High Availability and Design Principles
 
 Pings in Space is designed along [KISS](https://en.wikipedia.org/wiki/KISS_principle) principles where each component is intended to carry out as few as possible roles.
 This enables each component to be more easily scoped and tested and for each componenent to be scaled in order to serve more demanding scenarios.
+
+High Availability, as in any given scenario may be attained to depending upon the required level of resilence and the amount of effort and expenditure commited to based upon a cost benefit analysis.
 
 ### Coping with Agent Failures
 
@@ -90,7 +92,7 @@ deploy additional agents to compensate for this loss. Newly instantiated agents 
 ### Coping with Engine Failures
 
 The Ping Engine is an API served by a web service endpoint which may
-be run upon one or more instances and load balanced by high availability load balanc solutions such as an API Gateway as provided
+be run upon one or more instances and load balanced via high availability load balance solutions such as an API Gateway as provided
 by Cloud Providors such as AWS or Azure or by self hosted instances of
 HA Proxy or Nginx.
 
@@ -101,8 +103,8 @@ The reporting and alerting function of the Engine role may be monitored and made
 
 ### User Interface Availability
 
-As the User interface is optional to the running of both Endinges and Agents this may be considered to be 'ephemeral' as a failure to access the UI may be
+As the User interface is optional to the running of both Engines and Agents this may be considered to be 'ephemeral' as a failure to access the UI may be
 tollerated as long as the service may be restored in a timely manner.
 
 This said, as UI is deployed as a Single Page Application, so long
-as the Engine API is available, it may be served from a highly available endpoint such as a Web Application in Azure or equivalent AWS service. In on-prem implementations this may be made highly available by the same means as may the Engine Restful API, utilising highly available load balancers.
+as the Engine API is available, it may be served from a highly available endpoint such as a Web Application in Azure or equivalent AWS service. In on-prem implementations this may be made highly available by the same means as the Engine Restful API, utilising highly available load balancers.
