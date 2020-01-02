@@ -1,0 +1,30 @@
+[
+  {
+    "org": "google",
+    "org_id": 2,
+    "type": "check_http",
+    "type_id": 1,
+    "name": "google-www.google.com-check_http-check_homepage",
+    "name_id": 2,
+    "cmd_check_command": "/usr/lib/nagios/plugins/check_http",
+    "cmd_server": "www.google.com",
+    "cmd_url": "/",
+    "cmd_string_to_match": "google",
+    "cmd_to_run": "/usr/lib/nagios/plugins/check_http --ssl -H www.google.com -u / -s google",
+    "cmd": "{{cmd_check_command}} --ssl -H {{cmd_server}} -u {{cmd_url}} -s {{cmd_string_to_match}}"
+  },
+  {
+    "org": "yahoo",
+    "org_id": 2,
+    "type": "check_http",
+    "type_id": 1,
+    "name": "yahoo-www.yahoo.com-check_http-check_homepage",
+    "name_id": 2,
+    "cmd_check_command": "/usr/lib/nagios/plugins/check_http",
+    "cmd_server": "www.yahoo.com",
+    "cmd_url": "/",
+    "cmd_string_to_match": "yahoo",
+    "cmd_to_run": "/usr/lib/nagios/plugins/check_http --ssl -H www.yahoo.com -u / -s yahoo",
+    "cmd": "{{cmd_check_command}} --ssl -H {{cmd_server}} -u {{cmd_url}} -s {{cmd_string_to_match}}"
+  }
+  ]
