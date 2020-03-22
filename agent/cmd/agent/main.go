@@ -5,7 +5,7 @@ import (
 
 	architecture "github.com/marshyon/pingsinspace/agent"
 
-	systemexec "github.com/marshyon/pingsinspace/agent/agent/systemExec"
+	systemexec "github.com/marshyon/pingsinspace/agent/systemExec"
 )
 
 func main() {
