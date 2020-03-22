@@ -1,100 +1,36 @@
 package architecture
 
-// "org": "yahoo",
-// "org_id": 2,
-// "type": "check_http",
-// "type_id": 1,
-// "name": "yahoo-www.yahoo.com-check_http-check_homepage",
-// "name_id": 2,
-// "cmd_check_command": "/usr/lib/nagios/plugins/check_http",
-// "cmd_server": "www.yahoo.com",
-// "cmd_url": "/",
-// "cmd_string_to_match": "yahoo",
-// "cmd_to_run": "/usr/lib/nagios/plugins/check_http --ssl -H www.yahoo.com -u / -s yahoo",
-// "cmd": "{{cmd_check_command}} --ssl -H {{cmd_server}} -u {{cmd_url}} -s {{cmd_string_to_match}}"
-
-// Job describes a job to be run by an agent
-type Job struct {
-	Org             string
-	OrgID           int
-	Type            int
-	TypeID          int
-	Name            string
-	CmdCheckCommand string
-	CmdServer       string
-	CmdURL          string
-	CmdStringMatch  string
-	Cmd             string
+// CommandResult represents outputs of a system command
+type CommandResult struct {
+	standardOut   string
+	standardError string
+	exitCode      int
 }
 
-// // Accessor interface is used to access and abstract the back-end
-// type Accessor interface {
-// 	Configure(n int, p Version)
-// 	Run() (map[int]Version, int)
-// }
+// Accessor interface is used to access and abstract the back-end
+// ID is used to uniquely identify each command that is configured
+// and is expected to be incremented from 0 so that this can be
+// used by the Run methond to return each result set as a slice of
+// CommandResult(s)
+type Accessor interface {
+	Run(string, int) CommandResult
+}
 
-// // Version struct used to store a version
-// type Version struct {
-// 	Tag string
-// }
+// JobService uses accessor interface
+type JobService struct {
+	a Accessor
+}
 
-// // VersionService uses accessor interface
-// type VersionService struct {
-// 	a Accessor
-// }
+// Run method used to run jobs
+func (vs JobService) Run(cmd string, ID int) CommandResult {
+	r := vs.a.Run(cmd, ID)
+	return r
+}
 
-// // Get method used to access data through
-// // Version service and the Retrieve method
-// // the Retrieve method is implemented by the storage backend
-// func (vs VersionService) Get() (map[int]Version, int, error) {
-// 	v, l := vs.a.Retrieve()
-// 	return v, l, nil
-// }
-
-// // Save method used to access data through
-// // Version service and the Save method
-// // the Save method is implemented by the storage backend
-// func (vs VersionService) Save(n int, p Version) {
-// 	vs.a.Save(n, p)
-// }
-
-// func (vs VersionService) GetCurrentVersion() (string, int, error) {
-// 	res, level, err := vs.Get()
-// 	return res[1].Tag, level, err
-// }
-
-// func (vs VersionService) GetNextVersion(currentVersion string, level int) (nextVersion string) {
-
-// 	if currentVersion == "" {
-// 		nextVersion = "0.0.1"
-// 	} else {
-
-// 		v, err := semver.Make(currentVersion)
-// 		if err != nil {
-// 			log.Fatalf("failed to create semver : %s\n", err)
-// 		}
-
-// 		if level == 0 {
-// 			v.Major = v.Major + 1
-// 			v.Minor = 0
-// 			v.Patch = 0
-// 		} else if level == 1 {
-// 			v.Minor = v.Minor + 1
-// 			v.Patch = 0
-// 		} else if level == 2 {
-// 			v.Patch = v.Patch + 1
-// 		}
-
-// 		nextVersion = fmt.Sprintf("%d.%d.%d", v.Major, v.Minor, v.Patch)
-// 	}
-
-// 	return nextVersion
-// }
-
-// // NewVersionService creates a new service to action
-// // save and retrieve operations
-// func NewVersionService(a Accessor) VersionService {
-// 	return VersionService{
-// 		a: a,
-// 	}
-// }
+// NewJobService creates a new service to action
+// run and configure operations
+func NewJobService(a Accessor) JobService {
+	return JobService{
+		a: a,
+	}
+}
