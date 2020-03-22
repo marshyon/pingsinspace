@@ -13,7 +13,7 @@ func main() {
 	sexec := systemexec.Job{}
 
 	js := architecture.NewJobService(sexec)
-	js.Run("test command to run", 1)
+	js.Run("EXEC_RES_WARN_EXIT_WARN", 1)
 	log.Println("end run.")
 
 }
